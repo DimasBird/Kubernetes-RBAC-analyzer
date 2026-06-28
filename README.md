@@ -35,4 +35,6 @@
 
 Конфигурация инструмента представляет из себя задание опасных правил, разыскиваемых в манифестах Kubernetes.
 Пример конфигурационного файла представлен на рисунке:
-<img src="docs/images/conf_file_example.png" alt="example" width="500">
+
+
+<img src="docs/images/conf_file_example.png" alt="example" width="900">
