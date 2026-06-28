@@ -1,0 +1,44 @@
+@safe: User:john
+  scope ---> default
+  Role:pod-reader
+  apiGroups: ['']
+  resources: ['pods']
+  verbs:     ['get', 'list', 'watch']
+
+!not safe: User:john
+  scope ---> default
+  Role:pod-reader
+  apiGroups: ['']
+  resources: ['pods']
+  verbs:     ['create']
+  [{'unsafe_rule_name': 'full_write_access', 'matched_verbs': ['create'], 'matched_resources': ['pods'], 'matched_api_groups': ['']}]
+
+@safe: User:john
+  scope ---> wildcard-binding
+  Role:wildcard-role
+  apiGroups: ['']
+  resources: ['events']
+  verbs:     ['*']
+
+!not safe: User:john
+  scope ---> wildcard-binding
+  Role:wildcard-role
+  apiGroups: ['']
+  resources: ['pods']
+  verbs:     ['*']
+  [{'unsafe_rule_name': 'full_write_access', 'matched_verbs': ['create', 'update', 'patch'], 'matched_resources': ['pods'], 'matched_api_groups': ['']}]
+
+@safe: ServiceAccount:default:name-sa
+  scope ---> default
+  Role:pod-reader
+  apiGroups: ['']
+  resources: ['pods']
+  verbs:     ['get', 'list', 'watch']
+
+!not safe: ServiceAccount:default:name-sa
+  scope ---> default
+  Role:pod-reader
+  apiGroups: ['']
+  resources: ['pods']
+  verbs:     ['create']
+  [{'unsafe_rule_name': 'full_write_access', 'matched_verbs': ['create'], 'matched_resources': ['pods'], 'matched_api_groups': ['']}]

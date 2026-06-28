@@ -1,0 +1,60 @@
+unsafe_rules:
+    - name: full_write_access
+      rule:
+        verbs: ["create", "patch", "update"]
+        resources: ["pods", "deployments", "statefulsets", "daemonsets", "replicasets", "jobs", "cronjobs"]
+        apiGroups: ["", "apps", "extensions", "batch"]
+
+    - name: full_pod_shell
+      rule:
+        verbs: ["*"]
+        resources: ["pods/exec", "pods/attach"]
+        apiGroups: [""]
+
+    - name: access_to_secrets
+      rule:
+        verbs: ["get", "list", "watch"]
+        resources: ["secrets"]
+        apiGroups: [""]
+
+    - name: create_sa_token_ability
+      rule:
+        verbs: ["create"]
+        resources: ["serviceaccounts/token"]
+        apiGroups: [""]
+
+    - name: access_to_nodes_proxy
+      rule:
+        verbs: ["*"]
+        resources: ["nodes/proxy"]
+        apiGroups: ["*"]
+
+    - name: create_role_ability
+      rule:
+        verbs: ["create"]
+        resources: ["roles", "clusterroles"]
+        apiGroups: ["rbac.authorization.k8s.io"]
+
+    - name: escalate_ability
+      rule:
+        verbs: ["escalate"]
+        resources: ["roles", "clusterroles"]
+        apiGroups: ["rbac.authorization.k8s.io"]
+
+    - name: binding_ability
+      rule:
+        verbs: ["bind"]
+        resources: ["rolebindings", "clusterrolebindings"]
+        apiGroups: ["rbac.authorization.k8s.io"]
+
+    - name: impersonate_ability
+      rule:
+        verbs: ["impersonate"]
+        resources: ["users", "groups", "serviceaccounts"]
+        apiGroups: ["authentication.k8s.io"]
+
+    - name: namespace_patch
+      rule:
+        verbs: ["patch"]
+        resources: ["namespaces"]
+        apiGroups: [""]

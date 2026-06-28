@@ -1,0 +1,142 @@
+{
+    "User:john": [
+        {
+            "role": "pod-reader",
+            "scope": "default",
+            "kind": "Role",
+            "apiGroups": [
+                ""
+            ],
+            "resources": [
+                "pods"
+            ],
+            "verbs": [
+                "get",
+                "list",
+                "watch"
+            ],
+            "matched": []
+        },
+        {
+            "role": "pod-reader",
+            "scope": "default",
+            "kind": "Role",
+            "apiGroups": [
+                ""
+            ],
+            "resources": [
+                "pods"
+            ],
+            "verbs": [
+                "create"
+            ],
+            "matched": [
+                {
+                    "unsafe_rule_name": "full_write_access",
+                    "matched_verbs": [
+                        "create"
+                    ],
+                    "matched_resources": [
+                        "pods"
+                    ],
+                    "matched_api_groups": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "role": "wildcard-role",
+            "scope": "wildcard-binding",
+            "kind": "Role",
+            "apiGroups": [
+                ""
+            ],
+            "resources": [
+                "events"
+            ],
+            "verbs": [
+                "*"
+            ],
+            "matched": []
+        },
+        {
+            "role": "wildcard-role",
+            "scope": "wildcard-binding",
+            "kind": "Role",
+            "apiGroups": [
+                ""
+            ],
+            "resources": [
+                "pods"
+            ],
+            "verbs": [
+                "*"
+            ],
+            "matched": [
+                {
+                    "unsafe_rule_name": "full_write_access",
+                    "matched_verbs": [
+                        "update",
+                        "create",
+                        "patch"
+                    ],
+                    "matched_resources": [
+                        "pods"
+                    ],
+                    "matched_api_groups": [
+                        ""
+                    ]
+                }
+            ]
+        }
+    ],
+    "ServiceAccount:default:name-sa": [
+        {
+            "role": "pod-reader",
+            "scope": "default",
+            "kind": "Role",
+            "apiGroups": [
+                ""
+            ],
+            "resources": [
+                "pods"
+            ],
+            "verbs": [
+                "get",
+                "list",
+                "watch"
+            ],
+            "matched": []
+        },
+        {
+            "role": "pod-reader",
+            "scope": "default",
+            "kind": "Role",
+            "apiGroups": [
+                ""
+            ],
+            "resources": [
+                "pods"
+            ],
+            "verbs": [
+                "create"
+            ],
+            "matched": [
+                {
+                    "unsafe_rule_name": "full_write_access",
+                    "matched_verbs": [
+                        "create"
+                    ],
+                    "matched_resources": [
+                        "pods"
+                    ],
+                    "matched_api_groups": [
+                        ""
+                    ]
+                }
+            ]
+        }
+    ],
+    "User:admin": []
+}
